@@ -12,7 +12,7 @@ import GameplayKit
 class GameScene: SKScene {
     
     //var bird2 = SKSpriteNode()
-    
+     var bird = SKSpriteNode()
     
     override func didMove(to view: SKView) {
         
@@ -25,6 +25,17 @@ class GameScene: SKScene {
         self.addChild(bird2)
       */
          
+        bird = childNode(withName: "bird") as! SKSpriteNode
+        
+        let birdTexture = SKTexture(imageNamed: "bird")
+        
+        bird.physicsBody = SKPhysicsBody(circleOfRadius: birdTexture.size().height / 13 )
+        bird.physicsBody?.affectedByGravity = true
+        bird.physicsBody?.isDynamic = true
+        bird.physicsBody?.mass = 0.5
+        
+        self.physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+        
         
     
     }
