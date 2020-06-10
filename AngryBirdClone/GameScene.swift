@@ -46,9 +46,9 @@ class GameScene: SKScene {
         let birdTexture = SKTexture(imageNamed: "bird")
         
         bird.physicsBody = SKPhysicsBody(circleOfRadius: birdTexture.size().height / 13 )
-        bird.physicsBody?.affectedByGravity = true
+        bird.physicsBody?.affectedByGravity = false
         bird.physicsBody?.isDynamic = true
-        bird.physicsBody?.mass = 0.5
+        bird.physicsBody?.mass = 0.15
         
         //Box
         
@@ -112,6 +112,9 @@ class GameScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
        //dokunmaya baslama
+        
+        bird.physicsBody?.applyImpulse(CGVector(dx: 50, dy: 100))
+        bird.physicsBody?.affectedByGravity = true
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
