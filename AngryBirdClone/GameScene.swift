@@ -229,5 +229,24 @@ class GameScene: SKScene {
     
     
     override func update(_ currentTime: TimeInterval) {
+        //Ekran degisirken devamli cagirilan bir fonksiyondur.
+        
+        if let birdPhysicBody = bird.physicsBody {
+            
+            if birdPhysicBody.velocity.dx <= 0.1 && birdPhysicBody.velocity.dy <= 0.1 && birdPhysicBody.angularVelocity <= 0.1 && gameStarted == true {
+                
+                bird.physicsBody?.affectedByGravity = false
+                bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                bird.physicsBody?.angularVelocity = 0
+                bird.zPosition = 1
+                bird.position = originalPosition!
+                gameStarted = false
+                
+                
+                
+            }
+            
+        }
+    
     }
 }
