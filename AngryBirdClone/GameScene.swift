@@ -20,7 +20,7 @@ class GameScene: SKScene {
     var box4 = SKSpriteNode()
     var box5 = SKSpriteNode()
     
-    
+    var gameStarted = false
     
     override func didMove(to view: SKView) {
         
@@ -112,13 +112,66 @@ class GameScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
        //dokunmaya baslama
-        
+        /*
         bird.physicsBody?.applyImpulse(CGVector(dx: 50, dy: 100))
         bird.physicsBody?.affectedByGravity = true
+       */
+        
+        if gameStarted == false {
+            
+            if let touch = touches.first {
+                
+                let touchLocation = touch.location(in: self)
+                let touchNodes = nodes(at: touchLocation)
+                
+                if touchNodes.isEmpty == false {
+                    
+                    for node in touchNodes {
+                        
+                        if let sprite = node as? SKSpriteNode {
+                            if sprite == bird {
+                                bird.position = touchLocation
+                            }
+                        }
+                        
+                        
+                    }
+                    
+                }
+            }
+        }
+        
+        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         //elini oynatti
+        
+        if gameStarted == false {
+            
+            if let touch = touches.first {
+                
+                let touchLocation = touch.location(in: self)
+                let touchNodes = nodes(at: touchLocation)
+                
+                if touchNodes.isEmpty == false {
+                    
+                    for node in touchNodes {
+                        
+                        if let sprite = node as? SKSpriteNode {
+                            if sprite == bird {
+                                bird.position = touchLocation
+                            }
+                        }
+                        
+                        
+                    }
+                    
+                }
+            }
+        }
+        
+        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -126,7 +179,7 @@ class GameScene: SKScene {
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //dokunmaktan vazgecit
+        //dokunmaktan vazgeciti
     }
     
     
