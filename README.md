@@ -1,4 +1,4 @@
-# IOS-AngryBirdClone-SpriteKit
+# IOS-AngryBirdGame-SpriteKit
 # Project Main
 iOS-This is a simple game made with SpriteKit.
 # SpriteKit
